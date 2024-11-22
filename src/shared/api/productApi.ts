@@ -6,7 +6,7 @@ const getProducts=(limit:number,skip:number) =>{
 }
 
 const searchProducts = (query: string) => {
-    return instance.get(`https://dummyjson.com/products/search?q=${query}`);
+    return instance.get(`/products/search?q=${query}`);
   };
 export default {
     getProducts,

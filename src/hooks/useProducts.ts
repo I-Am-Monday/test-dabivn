@@ -16,8 +16,9 @@ export function useProducts() {
 
     setLoading(true);
     try {
+      const limit = 20;
       const offset = page * 20;
-      const response = await productApi.getProducts(20, offset);
+      const response = await productApi.getProducts(limit, offset);
 
       if (response.data.products.length > 0) {
         setProducts((prevProducts) => [
@@ -61,15 +62,11 @@ export function useProducts() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight;
     const clientHeight = document.documentElement.clientHeight;
-
-    if (
-      scrollTop + clientHeight === scrollHeight &&
-      hasMore &&
-      !loading &&
-      !searchQuery
-    ) {
+  
+    // Sử dụng so sánh gần đúng
+    if (Math.abs(scrollTop + clientHeight - scrollHeight) < 1 && hasMore && !loading && !searchQuery) {
       setIsBottom(true);
-      setPage((prevPage) => prevPage + 1);
+      setPage(prevPage => prevPage + 1);
     } else {
       setIsBottom(false);
     }

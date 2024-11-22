@@ -7,7 +7,7 @@ function App() {
   const { products, loading, noResults, handleSearch } = useProducts();
 
   const loadingMessage = loading && products.length === 0 ? <p>Loading...</p> : null;
-  const noResultsMessage = noResults ? <p>Không có sản phẩm nào phù hợp với từ khóa tìm kiếm của bạn.</p> : null;
+  const noResultsMessage = noResults ? <p>There are no products matching your search keywords.</p> : null;
 
   return (
     <main>
