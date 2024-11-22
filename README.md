@@ -1,50 +1,77 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Infinite Scrolling Product List
 
-Currently, two official plugins are available:
+A  React + TypeScript + Vite project implementing infinite scrolling and search functionality using the [DummyJSON Products API](https://dummyjson.com/docs/products).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Infinite Scrolling:** Dynamically load more products as the user scrolls to the bottom of the page.
+- **Real-Time Search:** Filter products by title while typing in the search bar.
+- **Responsive Design:** Ensures compatibility across devices with a clean and intuitive UI.
+- **API Integration:** Fetches products data from the DummyJSON API.
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Prerequisites
+
+Ensure your environment includes:
+- **Node.js** version 18 or higher
+- **Yarn** or **npm** for package management
+
+---
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/I-Am-Monday/test-dabivn.git
+
 
 - Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
 - Optionally add `...tseslint.configs.stylisticTypeChecked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
 ```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+cd test-dabivn
+npm i
+src/
+├── components/         # Reusable components (ProductLists, Search)
+├── hooks/              # Custom hooks (useProducts)
+├── shared/api/         # API functions for fetching data
+├── types/              # TypeScript type definitions
+├── App.tsx             # Main application entry
+└── index.tsx           # React DOM rendering
+API Endpoints
+Get Products: /products?limit={limit}&skip={skip}
+Search Products: /products/search?q={query}
+For complete API documentation, visit DummyJSON Products API.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Features Overview
+Infinite Scrolling
+Dynamically fetches 20 products at a time.
+Automatically loads more products as the user scrolls down.
+Search
+Filter products in real-time by entering keywords in the search bar.
+UI Design
+Grid layout for product cards.
+Hover effects for interactive feedback.
+Styles (CSS)
+Key styles for the UI:
+
+Input Field:
+Rounded corners and smooth transitions.
+Focus and hover states for better UX.
+Product List:
+Responsive grid layout for displaying product cards.
+Shadow and scaling effects on hover.
+Development Tools
+Vite: Fast build tool for modern web projects.
+TypeScript: Ensures type safety and scalable codebase.
+Axios: Simplifies HTTP requests to APIs.
+ESLint: Ensures consistent coding standards.
+Running Tests (Optional)
+Test infinite scrolling by scrolling to the bottom of the page.
+Test search functionality by typing in the search bar and verifying filtered results.
